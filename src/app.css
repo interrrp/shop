@@ -6,6 +6,14 @@
   font-family: system-ui, sans-serif;
 }
 
+body {
+  min-height: 100vh;
+}
+
+#app {
+  display: contents;
+}
+
 ul {
   list-style-type: none;
 }

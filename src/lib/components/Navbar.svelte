@@ -26,6 +26,7 @@
     border-bottom: 1px solid rgb(0 0 0 / 10%);
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   a {

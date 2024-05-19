@@ -8,7 +8,7 @@
 <div id="container">
   <h3>{name} (${price})</h3>
   <p>{description}</p>
-  <Button>Add to cart</Button>
+  <Button text="Add to cart" />
 </div>
 
 <style>

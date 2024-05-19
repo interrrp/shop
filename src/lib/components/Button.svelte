@@ -1,4 +1,14 @@
-<button><slot /></button>
+<script>
+  /**
+   * @type {{
+   *   text: string,
+   *   onclick?: import("svelte/elements").MouseEventHandler<HTMLButtonElement>,
+   * }}
+   */
+  let { text, onclick } = $props();
+</script>
+
+<button {onclick}>{text}</button>
 
 <style>
   button {

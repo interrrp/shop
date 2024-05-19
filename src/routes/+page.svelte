@@ -1,14 +1,11 @@
 <script>
-  import Item from "$lib/components/Item.svelte";
+  import Items from "$lib/components/Items.svelte";
+
+  export let data;
 </script>
 
 <main>
-  <Item
-    id={1}
-    name="Cheeseburger"
-    description="A burger with cheese"
-    price={3.0}
-  />
+  <Items items={data.items} />
 </main>
 
 <style>

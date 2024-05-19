@@ -1,12 +1,19 @@
 <script>
+  import { getUser } from "$lib/db";
   import User from "./User.svelte";
 </script>
 
 <nav>
   <div>
-    <a href="/"><h2>Shop</h2></a>
+    <a href="/">Shop</a>
   </div>
-  <div></div>
+  <div>
+    {#await getUser() then user}
+      {#if user}
+        <a href="/cart">Cart</a>
+      {/if}
+    {/await}
+  </div>
   <div>
     <User />
   </div>
@@ -24,9 +31,6 @@
   a {
     color: inherit;
     text-decoration: none;
-  }
-
-  h2 {
     font-size: 20px;
   }
 </style>

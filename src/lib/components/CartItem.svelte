@@ -1,10 +1,10 @@
 <script>
-  /** @type {import("$lib/types/models").Item} */
-  let { id, name, description, price } = $props();
+  /** @type {import("$lib/types/models").CartItem} */
+  let { id, name, description, price, count } = $props();
 </script>
 
 <div>
-  <h2>{name} (${price})</h2>
+  <h2>{count > 1 ? `${count}x` : ""} {name} (${price})</h2>
   <p>{description}</p>
 </div>
 

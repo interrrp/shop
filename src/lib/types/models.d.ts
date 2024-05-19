@@ -5,6 +5,8 @@ export interface Item {
   price: number;
 }
 
+export type CartItem = Item & { count: number };
+
 export interface User {
   id: string;
   name: string;

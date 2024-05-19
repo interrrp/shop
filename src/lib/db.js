@@ -25,24 +25,23 @@ export async function getItems() {
   return items;
 }
 
-/** @returns {Promise<import("$lib/types/models").Item[] | null>} */
+/** @returns {Promise<import("$lib/types/models").CartItem[] | null>} */
 export async function getCartItems() {
   const user = await getUser();
   if (!user) return null;
 
-  const { data: itemsIds } = await db
+  const { data: itemsIdsData } = await db
     .from("cart")
     .select("item_id")
     .eq("user_id", user.id);
-  if (!itemsIds) return null;
+  if (!itemsIdsData) return null;
+  const itemIds = itemsIdsData.map((i) => i.item_id);
 
-  const { data: items } = await db
-    .from("items")
-    .select()
-    .in(
-      "id",
-      itemsIds.map((i) => i.item_id),
-    );
+  const { data: items } = await db.from("items").select().in("id", itemIds);
+  if (!items) return null;
 
-  return items;
+  return items.map((i) => ({
+    ...i,
+    count: itemIds.filter((id) => id === i.id).length,
+  }));
 }
